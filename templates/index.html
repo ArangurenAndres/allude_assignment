@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Maintenance Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+
+    <header class="topbar">
+      <div>
+        <h1>Maintenance Assistant</h1>
+        <p class="subtitle">Ask questions about maintenance records. History is kept per browser session.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn secondary" href="{{ url_for('export_txt') }}">Export history (.txt)</a>
+        <form method="POST" action="{{ url_for('clear_history') }}">
+          <button class="btn danger" type="submit">Clear</button>
+        </form>
+      </div>
+    </header>
+
+    <main class="card">
+      <form method="POST" class="ask">
+        <label class="label" for="question">Question</label>
+        <div class="row">
+          <input
+            id="question"
+            name="question"
+            type="text"
+            placeholder="e.g., How many incidents in March 2024 for EQ-102?"
+            autofocus
+            required
+          />
+          <button class="btn primary" type="submit">Ask</button>
+        </div>
+
+        <p class="hint">
+          Examples: “most common symptom in March”, “which technician handled the most”, “mentions ‘leak’ in January”.
+        </p>
+      </form>
+
+      <section class="history">
+        <div class="historyHeader">
+          <h2>History</h2>
+          <span class="count">{{ history|length }} items</span>
+        </div>
+
+        {% if history and history|length > 0 %}
+          <div class="items">
+            {% for item in history|reverse %}
+              <div class="item">
+                <div class="meta">{{ item.ts }}</div>
+                <div class="bubble q">
+                  <div class="tag">Q</div>
+                  <div class="text">{{ item.q }}</div>
+                </div>
+                <div class="bubble a">
+                  <div class="tag">A</div>
+                  <div class="text">{{ item.a }}</div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="empty">
+            No questions yet. Ask something above to start building memory.
+          </div>
+        {% endif %}
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Minimal UI • Clean history • Exportable memory</span>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+Q: How many total work orders are in the dataset?
+Expected: 200
+Output: 200
+--------------------------------------------------
+Q: Which equipment has the most incidents?
+Expected: CNC-01 with 28 work orders
+Output: The CNC-01 has the most incidents, with 28 work orders logged against it.
+--------------------------------------------------
+Q: How many incidents were there on CNC-01?
+Expected: 28
+Output: 28
+--------------------------------------------------
+Q: How many PRESSURE_FAULT incidents are there?
+Expected: 27
+Output: 27
+--------------------------------------------------
+Q: How many work orders were opened in July 2024?
+Expected: 16
+Output: 16
+--------------------------------------------------
+Q: Which technician handled the most work orders?
+Expected: R_PATEL with 40 work orders
+Output: The technician who handled the most work orders was R_PATEL with 40 work orders.
+--------------------------------------------------
+Q: How many incidents are on the HAAS_VF_SERIES product line?
+Expected: 80
+Output: 80
+--------------------------------------------------
+Q: How many work orders mention a leak in the comments or description?
+Expected: 16
+Output: 16
+--------------------------------------------------
+Q: How many SPINDLE_TIMEOUT incidents are there?
+Expected: 20
+Output: 20
+--------------------------------------------------
+Q: How many distinct equipment are in the dataset?
+Expected: 20
+Output: 
+--------------------------------------------------
+Q: How many PRESSURE_FAULT incidents are there on HAAS_VF_SERIES equipment?
+Expected: 15
+Output: 15
+--------------------------------------------------
+Q: How many work orders mention bearing issues?
+Expected: 35
+Output: 35
+--------------------------------------------------
+Q: How many work orders were there in the first half of 2024?
+Expected: 106
+Output: 106
+--------------------------------------------------
+Q: Which equipment has the most SPINDLE_TIMEOUT incidents?
+Expected: WELD-02 with 4 work orders
+Output: 
+--------------------------------------------------
+Q: How many different product lines are there?
+Expected: 6
+Output: 200
+--------------------------------------------------
+
+MULTI TURN
+
+Conversation: mt_01 (equipment_drilldown)
+
+Q: How many incidents were there on PRESS-01?
+Expected: 18
+Output: 18
+--------------------------------------------------
+Q: How many different technicians worked on it?
+Expected: 8
+Output: 10
+--------------------------------------------------
+Q: What was the most common symptom?
+Expected: ALIGNMENT_DRIFT and SENSOR_FAILURE, each with 3 work orders
+Output: The most common symptom was engine knocking.
+--------------------------------------------------
+Conversation: mt_02 (comparison)
+
+Q: How many incidents on CNC-01?
+Expected: 28
+Output: 28
+--------------------------------------------------
+Q: What about CNC-02?
+Expected: 18
+Output: 
+--------------------------------------------------
+Q: Which one had more?
+Expected: CNC-01 had more incidents (28 vs 18)
+Output: 
+--------------------------------------------------
+Conversation: mt_03 (scope_shift)
+
+Q: How many PRESSURE_FAULT incidents on HAAS_VF_SERIES?
+Expected: 15
+Output: 15
+--------------------------------------------------
+Q: And how many PRESSURE_FAULT incidents total across all equipment?
+Expected: 27
+Output: 27
+--------------------------------------------------
+Conversation: mt_04 (technician_deepdive)
+
+Q: Which technician handled the most work orders?
+Expected: R_PATEL with 40 work orders
+Output: The technician who handled the most work orders was R_PATEL with 40 work orders.
+--------------------------------------------------
+Q: How many incidents were there on CNC-01?
+Expected: 28
+Output: 28
+--------------------------------------------------

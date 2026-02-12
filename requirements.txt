@@ -1,0 +1,5 @@
+# requirements.txt
+
+flask>=3.0,<4
+pandas>=2.0,<3
+requests>=2.31,<3

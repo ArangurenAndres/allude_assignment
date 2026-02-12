@@ -1,0 +1,171 @@
+{
+  "timestamp": "2026-02-12T17:55:09.556374",
+  "single_turn": [
+    {
+      "id": "st_01",
+      "question": "How many total work orders are in the dataset?",
+      "expected": "200",
+      "output": "200"
+    },
+    {
+      "id": "st_02",
+      "question": "Which equipment has the most incidents?",
+      "expected": "CNC-01 with 28 work orders",
+      "output": "The CNC-01 has the most incidents, with 28 work orders logged against it."
+    },
+    {
+      "id": "st_03",
+      "question": "How many incidents were there on CNC-01?",
+      "expected": "28",
+      "output": "28"
+    },
+    {
+      "id": "st_04",
+      "question": "How many PRESSURE_FAULT incidents are there?",
+      "expected": "27",
+      "output": "27"
+    },
+    {
+      "id": "st_05",
+      "question": "How many work orders were opened in July 2024?",
+      "expected": "16",
+      "output": "16"
+    },
+    {
+      "id": "st_06",
+      "question": "Which technician handled the most work orders?",
+      "expected": "R_PATEL with 40 work orders",
+      "output": "The technician who handled the most work orders was R_PATEL with 40 work orders."
+    },
+    {
+      "id": "st_07",
+      "question": "How many incidents are on the HAAS_VF_SERIES product line?",
+      "expected": "80",
+      "output": "80"
+    },
+    {
+      "id": "st_08",
+      "question": "How many work orders mention a leak in the comments or description?",
+      "expected": "16",
+      "output": "16"
+    },
+    {
+      "id": "st_09",
+      "question": "How many SPINDLE_TIMEOUT incidents are there?",
+      "expected": "20",
+      "output": "20"
+    },
+    {
+      "id": "st_10",
+      "question": "How many distinct equipment are in the dataset?",
+      "expected": "20",
+      "output": ""
+    },
+    {
+      "id": "st_11",
+      "question": "How many PRESSURE_FAULT incidents are there on HAAS_VF_SERIES equipment?",
+      "expected": "15",
+      "output": "15"
+    },
+    {
+      "id": "st_12",
+      "question": "How many work orders mention bearing issues?",
+      "expected": "35",
+      "output": "35"
+    },
+    {
+      "id": "st_13",
+      "question": "How many work orders were there in the first half of 2024?",
+      "expected": "106",
+      "output": "106"
+    },
+    {
+      "id": "st_14",
+      "question": "Which equipment has the most SPINDLE_TIMEOUT incidents?",
+      "expected": "WELD-02 with 4 work orders",
+      "output": ""
+    },
+    {
+      "id": "st_15",
+      "question": "How many different product lines are there?",
+      "expected": "6",
+      "output": "200"
+    }
+  ],
+  "multi_turn": [
+    {
+      "id": "mt_01",
+      "name": "equipment_drilldown",
+      "turns": [
+        {
+          "question": "How many incidents were there on PRESS-01?",
+          "expected": "18",
+          "output": "18"
+        },
+        {
+          "question": "How many different technicians worked on it?",
+          "expected": "8",
+          "output": "10"
+        },
+        {
+          "question": "What was the most common symptom?",
+          "expected": "ALIGNMENT_DRIFT and SENSOR_FAILURE, each with 3 work orders",
+          "output": "The most common symptom was engine knocking."
+        }
+      ]
+    },
+    {
+      "id": "mt_02",
+      "name": "comparison",
+      "turns": [
+        {
+          "question": "How many incidents on CNC-01?",
+          "expected": "28",
+          "output": "28"
+        },
+        {
+          "question": "What about CNC-02?",
+          "expected": "18",
+          "output": ""
+        },
+        {
+          "question": "Which one had more?",
+          "expected": "CNC-01 had more incidents (28 vs 18)",
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "mt_03",
+      "name": "scope_shift",
+      "turns": [
+        {
+          "question": "How many PRESSURE_FAULT incidents on HAAS_VF_SERIES?",
+          "expected": "15",
+          "output": "15"
+        },
+        {
+          "question": "And how many PRESSURE_FAULT incidents total across all equipment?",
+          "expected": "27",
+          "output": "27"
+        }
+      ]
+    },
+    {
+      "id": "mt_04",
+      "name": "technician_deepdive",
+      "turns": [
+        {
+          "question": "Which technician handled the most work orders?",
+          "expected": "R_PATEL with 40 work orders",
+          "output": "The technician who handled the most work orders was R_PATEL with 40 work orders."
+        },
+        {
+          "question": "How many incidents were there on CNC-01?",
+          "expected": "28",
+          "output": "28"
+        }
+      ]
+    }
+  ]
+}

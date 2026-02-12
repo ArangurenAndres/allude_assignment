@@ -1,0 +1,105 @@
+{
+  "description": "Schema reference for maintenance_records.csv",
+  "columns": {
+    "work_order_id": {
+      "type": "integer",
+      "description": "Unique identifier for each maintenance incident. Multiple rows can share the same work_order_id (one row per technician update).",
+      "example": 100001
+    },
+    "equipment_id": {
+      "type": "string",
+      "description": "Machine identifier. Format: TYPE-NUMBER",
+      "distinct_values": 20,
+      "examples": ["CNC-01", "PRESS-03", "WELD-02", "LATHE-01", "MILL-02", "GRIND-01"]
+    },
+    "product_line": {
+      "type": "string",
+      "description": "Equipment family/product line that the equipment belongs to",
+      "distinct_values": 6,
+      "values": [
+        "HAAS_VF_SERIES",
+        "SCHULER_HYDRAULIC",
+        "ABB_WELD_ROBOT",
+        "DMG_MORI_LATHE",
+        "MAZAK_VERTICAL",
+        "STUDER_GRIND"
+      ]
+    },
+    "start_date": {
+      "type": "date",
+      "description": "Date the work order was opened. Format: YYYY-MM-DD",
+      "range": "2024-01-01 to 2024-12-31"
+    },
+    "start_time": {
+      "type": "time",
+      "description": "Time of day the work started. Format: HH:MM:SS"
+    },
+    "end_date": {
+      "type": "date",
+      "description": "Date the work order was closed. Format: YYYY-MM-DD"
+    },
+    "end_time": {
+      "type": "time",
+      "description": "Time of day the work was completed. Format: HH:MM:SS"
+    },
+    "description": {
+      "type": "string",
+      "description": "Structured incident classification following hierarchical format: TYPE / PRODUCT_LINE / SYSTEM / CATEGORY / DETAIL",
+      "examples": [
+        "COR / HAAS_VF_SERIES / HYDRAULIC / PRESSURE / LOW PRESSURE ALARM",
+        "PREV / SCHULER_HYDRAULIC / SCHEDULED / PM / QUARTERLY MAINTENANCE CHECK",
+        "COR / ABB_WELD_ROBOT / SENSOR / FAILURE / PROXIMITY SENSOR NOT RESPONDING"
+      ]
+    },
+    "technician": {
+      "type": "string",
+      "description": "Technician who logged this entry",
+      "distinct_values": 10,
+      "values": [
+        "M_JOHNSON", "R_PATEL", "S_CHEN", "K_MUELLER", "A_SILVA",
+        "T_NAKAMURA", "L_DUBOIS", "P_GARCIA", "J_WILSON", "D_KIM"
+      ]
+    },
+    "comment": {
+      "type": "string",
+      "description": "Free-text technician notes about diagnosis, repair actions, and follow-ups",
+      "examples": [
+        "Inspected CNC-01. Found worn bearing. Root cause: vibration fatigue.",
+        "Replaced hydraulic seal. Tested and confirmed normal operation.",
+        "Will monitor for next 48 hours. If issue recurs, full spindle motor replacement needed."
+      ]
+    },
+    "symptom_code": {
+      "type": "string",
+      "description": "Categorical classification of the issue type",
+      "distinct_values": 15,
+      "values": [
+        "PRESSURE_FAULT",
+        "SPINDLE_TIMEOUT",
+        "HYDRAULIC_LEAK",
+        "ELECTRICAL_SHORT",
+        "PM_QUARTERLY",
+        "PM_ANNUAL",
+        "BEARING_WEAR",
+        "COOLANT_FLOW",
+        "ALIGNMENT_DRIFT",
+        "SENSOR_FAILURE",
+        "VIBRATION_EXCESS",
+        "TEMPERATURE_HIGH",
+        "TOOL_BREAKAGE",
+        "SAFETY_INTERLOCK",
+        "CALIBRATION_DUE"
+      ]
+    }
+  },
+  "relationships": {
+    "equipment_to_product_line": {
+      "HAAS_VF_SERIES": ["CNC-01", "CNC-02", "CNC-03", "CNC-04", "CNC-05"],
+      "SCHULER_HYDRAULIC": ["PRESS-01", "PRESS-02", "PRESS-03", "PRESS-04"],
+      "ABB_WELD_ROBOT": ["WELD-01", "WELD-02", "WELD-03"],
+      "DMG_MORI_LATHE": ["LATHE-01", "LATHE-02", "LATHE-03"],
+      "MAZAK_VERTICAL": ["MILL-01", "MILL-02", "MILL-03"],
+      "STUDER_GRIND": ["GRIND-01", "GRIND-02"]
+    }
+  }
+}
