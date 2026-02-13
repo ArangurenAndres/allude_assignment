@@ -154,9 +154,7 @@ def search_work_orders(
     ].reset_index(drop=True)
 
 
-# ------------------------------------------------------------
-# OLD-STYLE Manual Demo (preserved)
-# ------------------------------------------------------------
+## run to debug retrieval system and see the results of the search fucntion with diff queries and fileters
 
 if __name__ == "__main__":
     from data import load_all
