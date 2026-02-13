@@ -286,3 +286,16 @@ count_incidents(work_orders, f=f)
 ```python
 maybe_llm(user, "106")
 ```
+
+## Model architecture and input flow diagrams
+ 
+
+## 1️ High-Level Pipeline
+
+![High-Level Architecture](diagrams/model_architecture.png)
+
+---
+
+## 2️ Detailed RAG Query Flow
+
+![Detailed RAG Flow](diagrams/query_flow.png)

@@ -8,9 +8,9 @@ import pandas as pd
 import re
 
 
-# -----------------------------
-# Filters
-# -----------------------------
+
+# Filters used across all analytics functions to narrow down the dataset before applying specific computations.
+
 
 @dataclass(frozen=True)
 class Filters:
@@ -33,6 +33,7 @@ class Filters:
     start_ts_min: Optional[pd.Timestamp] = None
     start_ts_max: Optional[pd.Timestamp] = None  # end-exclusive
 
+# Function used to apply the above filters to the work orders dataframe 
 
 def filter_work_orders(work_orders: pd.DataFrame, f: Filters) -> pd.DataFrame:
     """
@@ -160,9 +161,9 @@ def incidents_over_time(work_orders: pd.DataFrame, freq: str = "ME", f: Optional
     return out
 
 
-# -----------------------------
-# Text mentions
-# -----------------------------
+
+# Mention functions (keyword search in text fields)
+
 
 def count_mentions(work_orders: pd.DataFrame, keyword: str, f: Optional[Filters] = None) -> int:
     """
@@ -184,9 +185,9 @@ def count_mentions(work_orders: pd.DataFrame, keyword: str, f: Optional[Filters]
     return int(hay.str.contains(re.escape(kw), regex=True).sum())
 
 
-# -----------------------------
-# Technician analytics
-# -----------------------------
+
+# Technician analytics (requires "technicians" list column in work_orders) used for reasoning about technicians could be in multi-turn conversations
+
 
 def top_technicians(work_orders: pd.DataFrame, n: int = 5, f: Optional[Filters] = None) -> pd.DataFrame:
     """
@@ -230,7 +231,7 @@ def top_technicians(work_orders: pd.DataFrame, n: int = 5, f: Optional[Filters] 
     )
     return out
 
-
+#
 def count_distinct_technicians(work_orders: pd.DataFrame, f: Optional[Filters] = None) -> int:
     """
     Count DISTINCT technicians that appear in the filtered scope.
