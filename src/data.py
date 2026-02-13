@@ -7,9 +7,9 @@ from typing import Tuple, Optional
 import pandas as pd
 
 
-# ============================================================
+
 # Schema definition (expected columns in the raw CSV)
-# ============================================================
+
 
 REQUIRED_COLUMNS = [
     "work_order_id",  # identifier of a work order (incident); repeated across multiple event rows
@@ -158,9 +158,7 @@ def _concat_comments(s: pd.Series) -> str:
     return "\n".join(cleaned)
 
 
-# ============================================================
-# Convenience
-# ============================================================
+## Load all function allows to laod events and build work orders in one fucnction call 
 
 def load_all(csv_path: str | Path) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -174,14 +172,12 @@ def load_all(csv_path: str | Path) -> Tuple[pd.DataFrame, pd.DataFrame]:
     return events, work_orders
 
 
-# ============================================================
 # Cached loader utility (object-oriented convenience)
-# ============================================================
 
 @dataclass
 class MaintenanceData:
     """
-    Small helper that loads and caches:
+ loads and caches:
       - events (raw event rows)
       - work_orders (aggregated incident rows)
 
@@ -210,9 +206,9 @@ class MaintenanceData:
         return self._work_orders
 
 
-# ============================================================
-# Script-mode debug / validation (portable)
-# ============================================================
+
+# Script-mode debug / validation use it to debug and validate laoding process , not used for production
+
 
 if __name__ == "__main__":
     # Portable path (no absolute paths)
