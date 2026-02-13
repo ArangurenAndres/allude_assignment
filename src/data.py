@@ -92,6 +92,8 @@ def _validate_columns(df: pd.DataFrame) -> None:
 # Work-order view (one row per incident / work_order_id)
 # ============================================================
 
+
+##2
 def build_work_orders(events: pd.DataFrame) -> pd.DataFrame:
     """
     Collapse the raw event log to ONE row per work_order_id.
@@ -131,6 +133,8 @@ def build_work_orders(events: pd.DataFrame) -> pd.DataFrame:
     return agg
 
 
+# Function used to combine multiple commend updates into a single text for each work order, this is used for text retireval and tis used to 
+# to have a single filed with all the comments and then further evaluate the word mathcing with the query
 def _concat_comments(s: pd.Series) -> str:
     """
     Combine comment updates into a single text string.
@@ -159,7 +163,6 @@ def _concat_comments(s: pd.Series) -> str:
 
 
 ## Load all function allows to laod events and build work orders in one fucnction call 
-
 def load_all(csv_path: str | Path) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Load everything in one call.
@@ -173,7 +176,6 @@ def load_all(csv_path: str | Path) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
 
 # Cached loader utility (object-oriented convenience)
-
 @dataclass
 class MaintenanceData:
     """
@@ -208,8 +210,6 @@ class MaintenanceData:
 
 
 # Script-mode debug / validation use it to debug and validate laoding process , not used for production
-
-
 if __name__ == "__main__":
     # Portable path (no absolute paths)
     root = Path(__file__).resolve().parents[1]

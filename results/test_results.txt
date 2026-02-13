@@ -4,7 +4,7 @@ Output: 200
 --------------------------------------------------
 Q: Which equipment has the most incidents?
 Expected: CNC-01 with 28 work orders
-Output: The CNC-01 has the most incidents, with 28 work orders logged against it.
+Output: The CNC-01 has the most incidents with 28 work orders.
 --------------------------------------------------
 Q: How many incidents were there on CNC-01?
 Expected: 28
@@ -20,7 +20,7 @@ Output: 16
 --------------------------------------------------
 Q: Which technician handled the most work orders?
 Expected: R_PATEL with 40 work orders
-Output: The technician who handled the most work orders was R_PATEL with 40 work orders.
+Output: The technician who handled the most work orders was R_PATEL, managing to handle 40 work orders.
 --------------------------------------------------
 Q: How many incidents are on the HAAS_VF_SERIES product line?
 Expected: 80
@@ -103,7 +103,7 @@ Conversation: mt_04 (technician_deepdive)
 
 Q: Which technician handled the most work orders?
 Expected: R_PATEL with 40 work orders
-Output: The technician who handled the most work orders was R_PATEL with 40 work orders.
+Output: The technician who handled the most work orders was R_PATEL, managing to complete 40 work orders.
 --------------------------------------------------
 Q: How many incidents were there on CNC-01?
 Expected: 28

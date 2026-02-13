@@ -11,7 +11,7 @@ import re
 
 # Filters used across all analytics functions to narrow down the dataset before applying specific computations.
 
-
+# These filters represent the retrieval constraint in the RAG pipeline, so we can make sure that the analytic functions will be applied to a specific subset data
 @dataclass(frozen=True)
 class Filters:
     """
@@ -34,7 +34,6 @@ class Filters:
     start_ts_max: Optional[pd.Timestamp] = None  # end-exclusive
 
 # Function used to apply the above filters to the work orders dataframe 
-
 def filter_work_orders(work_orders: pd.DataFrame, f: Filters) -> pd.DataFrame:
     """
     Apply structured filters to the work_orders DataFrame.
@@ -66,8 +65,8 @@ def filter_work_orders(work_orders: pd.DataFrame, f: Filters) -> pd.DataFrame:
 
 
 
-# Analytic functions 
-
+# Analytic functions this functions are used for deterministic intent queries , ie we can obtain the result by correctly 
+# filtering the aggregated dataframe : ), no need for LLM reasoning 
 
 def count_incidents(work_orders: pd.DataFrame, f: Optional[Filters] = None) -> int:
     """
@@ -76,7 +75,7 @@ def count_incidents(work_orders: pd.DataFrame, f: Optional[Filters] = None) -> i
     df = filter_work_orders(work_orders, f or Filters())
     return int(len(df))
 
-
+# Count the number of distinct equipments 
 def count_distinct_equipment(work_orders: pd.DataFrame, f: Optional[Filters] = None) -> int:
     """
     Count number of distinct equipment IDs in scope.
@@ -86,7 +85,7 @@ def count_distinct_equipment(work_orders: pd.DataFrame, f: Optional[Filters] = N
         return 0
     return int(df["equipment_id"].astype(str).nunique())
 
-
+# Count the number of distinct product lines 
 def count_distinct_product_lines(work_orders: pd.DataFrame, f: Optional[Filters] = None) -> int:
     """
     Count number of distinct product lines in scope.
@@ -96,7 +95,7 @@ def count_distinct_product_lines(work_orders: pd.DataFrame, f: Optional[Filters]
         return 0
     return int(df["product_line"].astype(str).nunique())
 
-
+# Get the top N equipment id by number of work orders 
 def top_equipment(work_orders: pd.DataFrame, n: int = 5, f: Optional[Filters] = None) -> pd.DataFrame:
     """
     Return top N equipment IDs ranked by number of work orders.
@@ -116,7 +115,7 @@ def top_equipment(work_orders: pd.DataFrame, n: int = 5, f: Optional[Filters] = 
     )
     return out
 
-
+# The top symtpoms by number of work orders 
 def top_symptoms(work_orders: pd.DataFrame, n: int = 5, f: Optional[Filters] = None) -> pd.DataFrame:
     """
     Return top N symptom codes ranked by frequency.
@@ -136,7 +135,7 @@ def top_symptoms(work_orders: pd.DataFrame, n: int = 5, f: Optional[Filters] = N
     )
     return out
 
-
+# Number of incidenets over time the time can be daily, weekl or monthlìy 
 def incidents_over_time(work_orders: pd.DataFrame, freq: str = "ME", f: Optional[Filters] = None) -> pd.DataFrame:
     """
     Aggregate incidents over time.
@@ -163,8 +162,6 @@ def incidents_over_time(work_orders: pd.DataFrame, freq: str = "ME", f: Optional
 
 
 # Mention functions (keyword search in text fields)
-
-
 def count_mentions(work_orders: pd.DataFrame, keyword: str, f: Optional[Filters] = None) -> int:
     """
     Count work orders where keyword appears in description OR comments.

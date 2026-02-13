@@ -52,7 +52,7 @@ This will:
 - Print output in the terminal
 - Save results in folder results / test_reuslts.txt, test_results.json
 
-## By default the system uses deterministic Analysis for  (LLM synthesis)
+## By default the system uses deterministic Analysis for  (LLM synthesis is optional)
 
 This project can use a local LLM via  **Ollama** for the “Generation” part of the RAG pipeline.
 

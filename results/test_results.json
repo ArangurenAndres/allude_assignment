@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-12T17:55:09.556374",
+  "timestamp": "2026-02-13T15:50:56.721805",
   "single_turn": [
     {
       "id": "st_01",
@@ -11,7 +11,7 @@
       "id": "st_02",
       "question": "Which equipment has the most incidents?",
       "expected": "CNC-01 with 28 work orders",
-      "output": "The CNC-01 has the most incidents, with 28 work orders logged against it."
+      "output": "The CNC-01 has the most incidents with 28 work orders."
     },
     {
       "id": "st_03",
@@ -35,7 +35,7 @@
       "id": "st_06",
       "question": "Which technician handled the most work orders?",
       "expected": "R_PATEL with 40 work orders",
-      "output": "The technician who handled the most work orders was R_PATEL with 40 work orders."
+      "output": "The technician who handled the most work orders was R_PATEL, managing to handle 40 work orders."
     },
     {
       "id": "st_07",
@@ -158,7 +158,7 @@
         {
           "question": "Which technician handled the most work orders?",
           "expected": "R_PATEL with 40 work orders",
-          "output": "The technician who handled the most work orders was R_PATEL with 40 work orders."
+          "output": "The technician who handled the most work orders was R_PATEL, managing to complete 40 work orders."
         },
         {
           "question": "How many incidents were there on CNC-01?",

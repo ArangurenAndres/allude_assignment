@@ -216,6 +216,7 @@ def extract_filters(
 # -----------------------------
 
 def intent(q: str) -> str:
+    # Undersatnt the intent of the question by looking for keywords and pattens, simple rule based not ML based approach
     ql = q.lower()
 
     if ("mention" in ql or "mentions" in ql or
