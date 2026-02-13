@@ -90,6 +90,51 @@ export OLLAMA_MODEL=phi3:mini
 -------------------------------------------------------------------------------------------
 
 
+#  Future Work (Under Active Development)
+
+>  This project is currently under development.  
+> The goal is to improve robustness, generalization, and production-readiness beyond the current prototype.
+
+---
+
+##  More Robust Intent Detection
+- Replace brittle keyword routing with confidence-based classification.
+- Introduce LLM-based structured intent detection.
+- Add fallback logic when tool selection is uncertain.
+
+---
+
+## Stronger Filter Extraction
+- Improve normalization (e.g., `CNC 01` → `CNC-01`).
+- Add alias mapping for symptoms and equipment.
+- Expand time parsing (“Q1 2024”, “last month”, etc.).
+- Use LLMs for structured filter extraction (JSON outputs).
+
+---
+
+##  Improved Retrieval
+- Upgrade from basic word matching to **BM25**.
+- Add **semantic embeddings** (SentenceTransformers).
+- Explore hybrid retrieval (lexical + semantic reranking).
+
+---
+
+##  Multi-Turn Support
+- Maintain conversation state across queries.
+- Merge filters across turns.
+- Resolve references (“those”, “same machine”, etc.).
+
+---
+
+##  Expanded Analytics
+- Add trend analysis and percentage breakdowns.
+- Support comparative and aggregation queries.
+- Improve coverage beyond simple counts.
+
+---
+
+--------------------------------------------------------------------------------------------
+
 This project implements a **Retrieval-Augmented Generation (RAG)** architecture.
 
 ## The reuslts of the tested RAG system can be found in the results folder 
